@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Diário Emocional</title>
+
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<div class="container">
+
+    <h1>Diário Emocional</h1>
+
+    <form action="/diario" method="POST">
+
+        <label>Situação</label>
+        <textarea
+            name="situacao"
+            placeholder="O que aconteceu?"
+            required>
+        </textarea>
+
+        <label>Emoção</label>
+        <input
+            type="text"
+            name="emocao"
+            placeholder="Ex: Ansiedade"
+            required>
+
+        <label>Intensidade</label>
+
+        <select name="intensidade">
+
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+
+        </select>
+
+        <button type="submit">
+            Salvar Registro
+        </button>
+
+    </form>
+
+    <a href="/" class="voltar">
+        ← Voltar para início
+    </a>
+
+</div>
+
+</body>
+</html>

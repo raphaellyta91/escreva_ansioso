@@ -1,37 +1,106 @@
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background-color: #f3f7f5;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
-.container {
-  max-width: 700px;
-  margin: 50px auto;
-  background-color: white;
-  padding: 30px;
-  border-radius: 18px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-  text-align: center;
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    background:#f3f7f5;
+    min-height:100vh;
 }
 
-h1 {
-  color: #5b8f7b;
+.container{
+    width:90%;
+    max-width:900px;
+    margin:40px auto;
+    background:#ffffff;
+    padding:30px;
+    border-radius:20px;
+    box-shadow:0 4px 20px rgba(0,0,0,0.1);
 }
 
-p {
-  color: #555;
+h1{
+    text-align:center;
+    color:#5f8f82;
+    margin-bottom:20px;
 }
 
-.botao {
-  display: block;
-  background-color: #8fcbb0;
-  color: white;
-  text-decoration: none;
-  padding: 14px;
-  border-radius: 12px;
-  margin: 12px 0;
+p{
+    text-align:center;
+    color:#555;
+    margin-bottom:20px;
 }
 
-.botao:hover {
-  background-color: #6fb093;
+.botao{
+    display:block;
+    width:100%;
+    text-align:center;
+    background:#8bc7ac;
+    color:white;
+    text-decoration:none;
+    padding:18px;
+    border-radius:15px;
+    margin-top:15px;
+    font-size:20px;
+    transition:.3s;
+}
+
+.botao:hover{
+    background:#70b393;
+}
+
+form{
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+}
+
+label{
+    font-weight:bold;
+    color:#555;
+}
+
+input,
+textarea,
+select{
+    width:100%;
+    padding:12px;
+    border:1px solid #ccc;
+    border-radius:10px;
+    font-size:16px;
+}
+
+textarea{
+    min-height:120px;
+}
+
+button{
+    border:none;
+    background:#8bc7ac;
+    color:white;
+    padding:15px;
+    border-radius:12px;
+    cursor:pointer;
+    font-size:18px;
+}
+
+button:hover{
+    background:#70b393;
+}
+
+.card{
+    background:#f8f8f8;
+    padding:15px;
+    border-radius:12px;
+    margin-bottom:15px;
+    border-left:5px solid #8bc7ac;
+}
+
+.voltar{
+    display:inline-block;
+    margin-top:20px;
+    text-decoration:none;
+    color:#5f8f82;
+    font-weight:bold;
 }

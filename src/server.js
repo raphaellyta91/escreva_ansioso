@@ -2,9 +2,10 @@ import express from 'express';
 import path from 'path';
 import dotenv from 'dotenv';
 import { fileURLToPath } from 'url';
-import sequelize from './config/database.js';
 
-import './models/index.js';
+import sequelize from './config/database.js';
+import diarioRoutes from './routes/diarioRoutes.js';
+import pageRoutes from './routes/pageRoutes.js';
 
 dotenv.config();
 
@@ -22,9 +23,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-app.get('/', (req, res) => {
-  res.render('pages/index');
-});
+app.use(pageRoutes);
+app.use(diarioRoutes);
 
 try {
   await sequelize.authenticate();
@@ -37,4 +37,5 @@ try {
     console.log(`Servidor rodando em http://localhost:${PORT}`);
   });
 } catch (erro) {
-  console.log('Erro ao conectar ou sincronizar o banco:', erro);}
+  console.log('Erro ao conectar ou sincronizar o banco:', erro);
+}
