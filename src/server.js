@@ -4,6 +4,8 @@ import dotenv from 'dotenv';
 import { fileURLToPath } from 'url';
 import sequelize from './config/database.js';
 
+import './models/index.js';
+
 dotenv.config();
 
 const app = express();
@@ -28,9 +30,11 @@ try {
   await sequelize.authenticate();
   console.log('Banco conectado com sucesso!');
 
+  await sequelize.sync();
+  console.log('Tabelas sincronizadas com sucesso!');
+
   app.listen(PORT, () => {
     console.log(`Servidor rodando em http://localhost:${PORT}`);
   });
 } catch (erro) {
-  console.log('Erro ao conectar no banco:', erro);
-}
+  console.log('Erro ao conectar ou sincronizar o banco:', erro);}
