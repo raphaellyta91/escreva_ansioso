@@ -2,21 +2,44 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Histórico</title>
- <link rel="stylesheet" href="/css/style.css">
+  <title>Histórico Emocional</title>
+  <link rel="stylesheet" href="/css/style.css">
 </head>
-<body onload="mostrarHistorico()">
+<body>
 
 <main class="container">
   <h1>Histórico Emocional</h1>
 
-  <div id="historico"></div>
+  <% if (diarios.length === 0) { %>
+    <p>Nenhum registro encontrado.</p>
+  <% } else { %>
 
-  <button onclick="limparHistorico()">Limpar histórico</button>
+    <% diarios.forEach(diario => { %>
+      <div class="card">
+        <p><strong>Situação:</strong> <%= diario.situacao %></p>
+        <p><strong>Emoção:</strong> <%= diario.emocao %></p>
+        <p><strong>Intensidade:</strong> <%= diario.intensidade %>/10</p>
+        <p><strong>Data:</strong> <%= diario.createdAt.toLocaleString('pt-BR') %></p>
 
-  <a href="index.html" class="voltar">Voltar</a>
+        <div class="acoes">
+          <a class="botao-secundario" href="/diario/<%= diario.id %>/editar">
+            Editar
+          </a>
+
+          <form action="/diario/<%= diario.id %>/excluir" method="POST">
+            <button class="botao-excluir" type="submit">
+              Excluir
+            </button>
+          </form>
+        </div>
+      </div>
+    <% }) %>
+
+  <% } %>
+
+  <a href="/diario" class="botao">Novo Registro</a>
+  <a href="/" class="voltar">← Voltar para início</a>
 </main>
 
-<script src="script.js"></script>
 </body>
 </html>

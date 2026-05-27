@@ -1,61 +1,45 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <title>Diário Emocional</title>
-
-    <link rel="stylesheet" href="/css/style.css">
+  <meta charset="UTF-8">
+  <title>Diário Emocional</title>
+  <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
 
-<div class="container">
+<main class="container">
+  <h1>Diário Emocional</h1>
 
-    <h1>Diário Emocional</h1>
+  <p>Registre o que aconteceu, como você se sentiu e a intensidade dessa emoção.</p>
 
-    <form action="/diario" method="POST">
+  <form action="/diario" method="POST">
 
-        <label>Situação</label>
-        <textarea
-            name="situacao"
-            placeholder="O que aconteceu?"
-            required>
-        </textarea>
+    <label>O que aconteceu?</label>
+    <textarea name="situacao" placeholder="Ex: Precisei apresentar um trabalho em sala..." required></textarea>
 
-        <label>Emoção</label>
-        <input
-            type="text"
-            name="emocao"
-            placeholder="Ex: Ansiedade"
-            required>
+    <label>Como você está se sentindo?</label>
+    <input type="text" name="emocao" placeholder="Ex: ansiedade, medo, insegurança" required>
 
-        <label>Intensidade</label>
+    <label>Intensidade da emoção</label>
+    <select name="intensidade" required>
+      <option value="">Selecione</option>
+      <option value="1">1 - Muito leve</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5 - Média</option>
+      <option value="6">6</option>
+      <option value="7">7</option>
+      <option value="8">8 - Forte</option>
+      <option value="9">9</option>
+      <option value="10">10 - Muito intensa</option>
+    </select>
 
-        <select name="intensidade">
+    <button type="submit">Salvar Registro</button>
+  </form>
 
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-            <option value="9">9</option>
-            <option value="10">10</option>
-
-        </select>
-
-        <button type="submit">
-            Salvar Registro
-        </button>
-
-    </form>
-
-    <a href="/" class="voltar">
-        ← Voltar para início
-    </a>
-
-</div>
+  <a href="/" class="voltar">← Voltar para início</a>
+</main>
 
 </body>
 </html>

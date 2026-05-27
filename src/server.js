@@ -4,8 +4,10 @@ import dotenv from 'dotenv';
 import { fileURLToPath } from 'url';
 
 import sequelize from './config/database.js';
-import diarioRoutes from './routes/diarioRoutes.js';
 import pageRoutes from './routes/pageRoutes.js';
+import diarioRoutes from './routes/diarioRoutes.js';
+
+import './models/diario.js';
 
 dotenv.config();
 

@@ -104,3 +104,37 @@ button:hover{
     color:#5f8f82;
     font-weight:bold;
 }
+
+.acoes {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+  align-items: center;
+}
+
+.acoes form {
+  margin: 0;
+}
+
+.botao-secundario {
+  background: #7aa6c2;
+  color: white;
+  text-decoration: none;
+  padding: 12px 18px;
+  border-radius: 10px;
+  font-size: 16px;
+}
+
+.botao-secundario:hover {
+  background: #5f8fac;
+}
+
+.botao-excluir {
+  background: #d98282;
+  padding: 12px 18px;
+  font-size: 16px;
+}
+
+.botao-excluir:hover {
+  background: #c96b6b;
+}
