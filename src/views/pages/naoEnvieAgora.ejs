@@ -3,25 +3,39 @@
 <head>
   <meta charset="UTF-8">
   <title>Não Envie Agora</title>
- <link rel="stylesheet" href="/css/style.css">
+
+  <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
 
 <main class="container">
+
   <h1>Não Envie Agora</h1>
 
-  <p>Escreva aqui tudo que você quer mandar, mas guarde por enquanto.</p>
+  <p>
+    Escreva aqui o que você gostaria de mandar,
+    mas sem agir no impulso.
+  </p>
 
-  <label>Mensagem:</label>
-  <textarea id="mensagem"></textarea>
+  <form action="/nao-envie-agora" method="POST">
 
-  <button onclick="guardarMensagem()">Guardar mensagem</button>
+    <textarea
+      name="texto"
+      placeholder="Escreva sua mensagem..."
+      required>
+    </textarea>
 
-  <div id="resultado" class="resultado"></div>
+    <button type="submit">
+      Salvar Mensagem
+    </button>
 
-  <a href="index.html" class="voltar">Voltar</a>
+  </form>
+
+  <a href="/" class="voltar">
+    ← Voltar para início
+  </a>
+
 </main>
 
-<script src="script.js"></script>
 </body>
 </html>

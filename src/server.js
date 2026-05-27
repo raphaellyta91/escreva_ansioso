@@ -6,8 +6,16 @@ import { fileURLToPath } from 'url';
 import sequelize from './config/database.js';
 import pageRoutes from './routes/pageRoutes.js';
 import diarioRoutes from './routes/diarioRoutes.js';
+import mensagemRoutes from './routes/mensagemRoutes.js';
+import fatoRoutes from './routes/fatoRoutes.js';
+import criseRoutes from './routes/criseRoutes.js';
 
+
+import './models/mensagem.js';
+import './models/fato.js';
 import './models/diario.js';
+import './models/crise.js';
+
 
 dotenv.config();
 
@@ -27,6 +35,9 @@ app.use(express.json());
 
 app.use(pageRoutes);
 app.use(diarioRoutes);
+app.use(mensagemRoutes);
+app.use(fatoRoutes);
+app.use(criseRoutes);
 
 try {
   await sequelize.authenticate();

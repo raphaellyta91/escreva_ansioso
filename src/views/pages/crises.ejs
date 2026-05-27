@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Histórico de Crises</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<main class="container">
+  <h1>Histórico de Crises</h1>
+
+  <% if (crises.length === 0) { %>
+    <p>Nenhuma crise registrada.</p>
+  <% } else { %>
+
+    <% crises.forEach(crise => { %>
+      <div class="card">
+        <p><strong>Situação:</strong></p>
+        <p><%= crise.situacao %></p>
+
+        <p><strong>Emoção:</strong> <%= crise.emocao %></p>
+        <p><strong>Intensidade:</strong> <%= crise.intensidade %>/10</p>
+
+        <p><strong>Ação sugerida:</strong></p>
+        <p><%= crise.acaoSugerida %></p>
+
+        <p>
+          <strong>Data:</strong>
+          <%= crise.createdAt.toLocaleString('pt-BR') %>
+        </p>
+
+        <div class="acoes">
+          <a class="botao-secundario" href="/crises/<%= crise.id %>/editar">
+            Editar
+          </a>
+
+          <form action="/crises/<%= crise.id %>/excluir" method="POST">
+            <button class="botao-excluir" type="submit">
+              Excluir
+            </button>
+          </form>
+        </div>
+      </div>
+    <% }) %>
+
+  <% } %>
+
+  <a href="/crise" class="botao">Novo Registro</a>
+  <a href="/" class="voltar">← Voltar para início</a>
+</main>
+
+</body>
+</html>

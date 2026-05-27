@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Editar Mensagem</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<main class="container">
+  <h1>Editar Mensagem</h1>
+
+  <p>Altere a mensagem salva no modo “Não Envie Agora”.</p>
+
+  <form action="/mensagens/<%= mensagem.id %>/atualizar" method="POST">
+    <label>Mensagem</label>
+
+    <textarea name="texto" required><%= mensagem.texto %></textarea>
+
+    <button type="submit">Salvar Alterações</button>
+  </form>
+
+  <a href="/mensagens" class="voltar">← Voltar para mensagens</a>
+</main>
+
+</body>
+</html>

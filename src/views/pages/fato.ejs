@@ -10,19 +10,27 @@
 <main class="container">
   <h1>Fato ou Interpretação</h1>
 
-  <label>O que aconteceu de verdade?</label>
-  <textarea id="fato"></textarea>
+  <p>Separe o que aconteceu de verdade daquilo que a ansiedade está imaginando.</p>
 
-  <label>O que sua ansiedade está imaginando?</label>
-  <textarea id="interpretacao"></textarea>
+  <form action="/fato" method="POST">
+    <label>O que aconteceu de verdade?</label>
+    <textarea
+      name="fatoReal"
+      placeholder="Ex: Enviei uma mensagem e a pessoa ainda não respondeu."
+      required></textarea>
 
-  <button onclick="analisarFato()">Analisar</button>
+    <label>O que sua ansiedade está imaginando?</label>
+    <textarea
+      name="interpretacao"
+      placeholder="Ex: Ela está me ignorando ou não quer mais falar comigo."
+      required></textarea>
 
-  <div id="resultado" class="resultado"></div>
+    <button type="submit">Salvar Registro</button>
+  </form>
 
-  <a href="index.html" class="voltar">Voltar</a>
+  <a href="/fatos" class="botao">Ver Histórico</a>
+  <a href="/" class="voltar">← Voltar para início</a>
 </main>
 
-<script src="script.js"></script>
 </body>
 </html>
