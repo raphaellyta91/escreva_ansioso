@@ -8,15 +8,26 @@
 <body>
 
 <main class="container">
-  <h1>Mensagens Salvas</h1>
+
+  <h1>📨 Mensagens Salvas</h1>
+
+  <p>
+    Aqui ficam armazenadas as mensagens escritas no modo
+    <strong>Não Envie Agora</strong>.
+  </p>
 
   <% if (mensagens.length === 0) { %>
+
     <p>Nenhuma mensagem salva.</p>
+
   <% } else { %>
 
     <% mensagens.forEach(mensagem => { %>
+
       <div class="card">
+
         <p><strong>Mensagem:</strong></p>
+
         <p><%= mensagem.texto %></p>
 
         <p>
@@ -25,24 +36,48 @@
         </p>
 
         <div class="acoes">
-          <a class="botao-secundario" href="/mensagens/<%= mensagem.id %>/editar">
+
+          <a
+            class="botao-secundario"
+            href="/mensagens/<%= mensagem.id %>/editar">
+
             Editar
+
           </a>
 
-          <form action="/mensagens/<%= mensagem.id %>/excluir" method="POST">
-            <button class="botao-excluir" type="submit">
+          <form
+            action="/mensagens/<%= mensagem.id %>/excluir"
+            method="POST">
+
+            <button
+              class="botao-excluir"
+              type="submit">
+
               Excluir
+
             </button>
+
           </form>
+
         </div>
+
       </div>
+
     <% }) %>
 
   <% } %>
 
-  <a href="/nao-envie-agora" class="botao">Nova Mensagem</a>
-  <a href="/" class="voltar">← Voltar para início</a>
+  <a href="/nao-envie-agora" class="botao">
+    Nova Mensagem
+  </a>
+
+  <a href="/home" class="voltar">
+    ← Menu Principal
+  </a>
+
 </main>
+
+<%- include('../partials/footer') %>
 
 </body>
 </html>

@@ -8,20 +8,40 @@
 <body>
 
 <main class="container">
+
   <h1>Editar Fato ou Interpretação</h1>
 
   <form action="/fatos/<%= fato.id %>/atualizar" method="POST">
+
     <label>O que aconteceu de verdade?</label>
-    <textarea name="fatoReal" required><%= fato.fatoReal %></textarea>
+
+    <textarea
+      name="fatoReal"
+      required><%= fato.fatoReal %></textarea>
 
     <label>O que sua ansiedade está imaginando?</label>
-    <textarea name="interpretacao" required><%= fato.interpretacao %></textarea>
 
-    <button type="submit">Salvar Alterações</button>
+    <textarea
+      name="interpretacao"
+      required><%= fato.interpretacao %></textarea>
+
+    <button type="submit">
+      Salvar Alterações
+    </button>
+
   </form>
 
-  <a href="/fatos" class="voltar">← Voltar para histórico</a>
+  <a href="/fatos" class="botao">
+    Voltar para Histórico
+  </a>
+
+  <a href="/home" class="voltar">
+    ← Menu Principal
+  </a>
+
 </main>
+
+<%- include('../partials/footer') %>
 
 </body>
 </html>

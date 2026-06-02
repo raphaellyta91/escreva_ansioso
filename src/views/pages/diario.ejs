@@ -8,19 +8,34 @@
 <body>
 
 <main class="container">
+
   <h1>Diário Emocional</h1>
 
-  <p>Registre o que aconteceu, como você se sentiu e a intensidade dessa emoção.</p>
+  <p>
+    Registre o que aconteceu, como você se sentiu e a intensidade dessa emoção.
+  </p>
 
   <form action="/diario" method="POST">
 
     <label>O que aconteceu?</label>
-    <textarea name="situacao" placeholder="Ex: Precisei apresentar um trabalho em sala..." required></textarea>
+
+    <textarea
+      name="situacao"
+      placeholder="Ex: Precisei apresentar um trabalho em sala..."
+      required>
+    </textarea>
 
     <label>Como você está se sentindo?</label>
-    <input type="text" name="emocao" placeholder="Ex: ansiedade, medo, insegurança" required>
+
+    <input
+      type="text"
+      name="emocao"
+      placeholder="Ex: ansiedade, medo, insegurança"
+      required
+    >
 
     <label>Intensidade da emoção</label>
+
     <select name="intensidade" required>
       <option value="">Selecione</option>
       <option value="1">1 - Muito leve</option>
@@ -35,11 +50,23 @@
       <option value="10">10 - Muito intensa</option>
     </select>
 
-    <button type="submit">Salvar Registro</button>
+    <button type="submit">
+      Salvar Registro
+    </button>
+
   </form>
 
-  <a href="/" class="voltar">← Voltar para início</a>
+  <a href="/historico" class="botao">
+    Ver Histórico
+  </a>
+
+  <a href="/home" class="voltar">
+    ← Voltar para início
+  </a>
+
 </main>
+
+<%- include('../partials/footer') %>
 
 </body>
 </html>

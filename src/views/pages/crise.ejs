@@ -10,16 +10,29 @@
 <main class="container">
   <h1>Modo Crise</h1>
 
-  <p>Use este espaço quando a ansiedade estiver intensa e você precisar desacelerar.</p>
+  <p>
+    Use este espaço quando a ansiedade estiver intensa e você precisar desacelerar.
+  </p>
 
   <form action="/crise" method="POST">
+
     <label>O que aconteceu?</label>
-    <textarea name="situacao" placeholder="Ex: A pessoa visualizou e não respondeu..." required></textarea>
+    <textarea
+      name="situacao"
+      placeholder="Ex: A pessoa visualizou e não respondeu..."
+      required>
+    </textarea>
 
     <label>Qual emoção você está sentindo?</label>
-    <input type="text" name="emocao" placeholder="Ex: ansiedade, medo, angústia" required>
+    <input
+      type="text"
+      name="emocao"
+      placeholder="Ex: ansiedade, medo, angústia"
+      required
+    >
 
     <label>Intensidade da crise</label>
+
     <select name="intensidade" required>
       <option value="">Selecione</option>
       <option value="1">1 - Muito leve</option>
@@ -34,12 +47,23 @@
       <option value="10">10 - Muito intensa</option>
     </select>
 
-    <button type="submit">Receber orientação</button>
+    <button type="submit">
+      Receber orientação
+    </button>
+
   </form>
 
-  <a href="/crises" class="botao">Ver Histórico de Crises</a>
-  <a href="/" class="voltar">← Voltar para início</a>
+  <a href="/crises" class="botao">
+    Ver Histórico de Crises
+  </a>
+
+  <a href="/home" class="voltar">
+    ← Voltar para início
+  </a>
+
 </main>
+
+<%- include('../partials/footer') %>
 
 </body>
 </html>

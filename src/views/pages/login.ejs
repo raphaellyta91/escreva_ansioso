@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Login - Ansioso</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<main class="container">
+
+  <h1>🔐 Login</h1>
+
+  <p>
+    Entre para acessar suas ferramentas emocionais e seu histórico.
+  </p>
+
+  <form action="/login" method="POST">
+
+    <label>E-mail</label>
+
+    <input
+      type="email"
+      name="email"
+      placeholder="Digite seu e-mail"
+      required
+    >
+
+    <label>Senha</label>
+
+    <input
+      type="password"
+      name="senha"
+      placeholder="Digite sua senha"
+      required
+    >
+
+    <button type="submit">
+      Entrar
+    </button>
+
+  </form>
+
+  <a href="/cadastro" class="botao">
+    Criar Conta
+  </a>
+
+  <a href="/" class="voltar">
+    ← Voltar
+  </a>
+
+</main>
+
+<%- include('../partials/footer') %>
+
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Quero Ajudar</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<main class="container">
+  <h1>Quero Ajudar</h1>
+
+  <p>
+    Cadastre-se para aparecer como uma pessoa disponível para conversar e acolher outras pessoas.
+  </p>
+
+  <form action="/acolhedor/cadastro" method="POST">
+    <label>Nome</label>
+    <input type="text" name="nome" required>
+
+    <label>Contato</label>
+    <input
+      type="text"
+      name="contato"
+      placeholder="WhatsApp, e-mail ou Instagram"
+      required
+    >
+
+    <label>Disponibilidade</label>
+    <input
+      type="text"
+      name="disponibilidade"
+      placeholder="Ex: noites, finais de semana..."
+      required
+    >
+
+    <label>Mensagem de acolhimento</label>
+    <textarea
+      name="mensagem"
+      placeholder="Ex: Estou disponível para ouvir com respeito e sem julgamentos."
+      required>
+    </textarea>
+
+    <button type="submit">Cadastrar</button>
+  </form>
+
+  <a href="/home" class="voltar">
+    ← Voltar para início
+  </a>
+</main>
+
+<%- include('../partials/footer') %>
+
+</body>
+</html>

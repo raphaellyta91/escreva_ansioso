@@ -8,38 +8,82 @@
 <body>
 
 <main class="container">
+
   <h1>Histórico Emocional</h1>
 
   <% if (diarios.length === 0) { %>
+
     <p>Nenhum registro encontrado.</p>
+
   <% } else { %>
 
     <% diarios.forEach(diario => { %>
+
       <div class="card">
-        <p><strong>Situação:</strong> <%= diario.situacao %></p>
-        <p><strong>Emoção:</strong> <%= diario.emocao %></p>
-        <p><strong>Intensidade:</strong> <%= diario.intensidade %>/10</p>
-        <p><strong>Data:</strong> <%= diario.createdAt.toLocaleString('pt-BR') %></p>
+
+        <p>
+          <strong>Situação:</strong>
+          <%= diario.situacao %>
+        </p>
+
+        <p>
+          <strong>Emoção:</strong>
+          <%= diario.emocao %>
+        </p>
+
+        <p>
+          <strong>Intensidade:</strong>
+          <%= diario.intensidade %>/10
+        </p>
+
+        <p>
+          <strong>Data:</strong>
+          <%= diario.createdAt.toLocaleString('pt-BR') %>
+        </p>
 
         <div class="acoes">
-          <a class="botao-secundario" href="/diario/<%= diario.id %>/editar">
+
+          <a
+            class="botao-secundario"
+            href="/diario/<%= diario.id %>/editar">
+
             Editar
+
           </a>
 
-          <form action="/diario/<%= diario.id %>/excluir" method="POST">
-            <button class="botao-excluir" type="submit">
+          <form
+            action="/diario/<%= diario.id %>/excluir"
+            method="POST">
+
+            <button
+              class="botao-excluir"
+              type="submit">
+
               Excluir
+
             </button>
+
           </form>
+
         </div>
+
       </div>
+
     <% }) %>
 
   <% } %>
 
-  <a href="/diario" class="botao">Novo Registro</a>
-  <a href="/" class="voltar">← Voltar para início</a>
+  <a href="/diario" class="botao">
+    Novo Registro
+  </a>
+
+  <a href="/home" class="voltar">
+    ← Menu Principal
+  </a>
+
 </main>
+
+<%- include('../partials/footer') %>
 
 </body>
 </html>

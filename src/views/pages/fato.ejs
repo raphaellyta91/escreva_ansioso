@@ -8,29 +8,48 @@
 <body>
 
 <main class="container">
+
   <h1>Fato ou Interpretação</h1>
 
-  <p>Separe o que aconteceu de verdade daquilo que a ansiedade está imaginando.</p>
+  <p>
+    Separe o que aconteceu de verdade daquilo que a ansiedade está imaginando.
+  </p>
 
   <form action="/fato" method="POST">
+
     <label>O que aconteceu de verdade?</label>
+
     <textarea
       name="fatoReal"
       placeholder="Ex: Enviei uma mensagem e a pessoa ainda não respondeu."
-      required></textarea>
+      required>
+    </textarea>
 
     <label>O que sua ansiedade está imaginando?</label>
+
     <textarea
       name="interpretacao"
       placeholder="Ex: Ela está me ignorando ou não quer mais falar comigo."
-      required></textarea>
+      required>
+    </textarea>
 
-    <button type="submit">Salvar Registro</button>
+    <button type="submit">
+      Salvar Registro
+    </button>
+
   </form>
 
-  <a href="/fatos" class="botao">Ver Histórico</a>
-  <a href="/" class="voltar">← Voltar para início</a>
+  <a href="/fatos" class="botao">
+    Ver Histórico
+  </a>
+
+  <a href="/home" class="voltar">
+    ← Menu Principal
+  </a>
+
 </main>
+
+<%- include('../partials/footer') %>
 
 </body>
 </html>

@@ -9,12 +9,16 @@ import diarioRoutes from './routes/diarioRoutes.js';
 import mensagemRoutes from './routes/mensagemRoutes.js';
 import fatoRoutes from './routes/fatoRoutes.js';
 import criseRoutes from './routes/criseRoutes.js';
-
+import acolhedorRoutes from './routes/acolhedorRoutes.js';
+import cookieParser from 'cookie-parser';
+import authRoutes from './routes/authRoutes.js';
 
 import './models/mensagem.js';
 import './models/fato.js';
 import './models/diario.js';
 import './models/crise.js';
+import './models/acolhedor.js';
+import './models/user.js';
 
 
 dotenv.config();
@@ -32,12 +36,15 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(cookieParser());
 
 app.use(pageRoutes);
 app.use(diarioRoutes);
 app.use(mensagemRoutes);
 app.use(fatoRoutes);
 app.use(criseRoutes);
+app.use(authRoutes);
+app.use(acolhedorRoutes);
 
 try {
   await sequelize.authenticate();

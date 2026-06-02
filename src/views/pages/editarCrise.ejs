@@ -8,29 +8,58 @@
 <body>
 
 <main class="container">
+
   <h1>Editar Registro de Crise</h1>
 
   <form action="/crises/<%= crise.id %>/atualizar" method="POST">
+
     <label>O que aconteceu?</label>
+
     <textarea name="situacao" required><%= crise.situacao %></textarea>
 
     <label>Qual emoção você sentiu?</label>
-    <input type="text" name="emocao" value="<%= crise.emocao %>" required>
+
+    <input
+      type="text"
+      name="emocao"
+      value="<%= crise.emocao %>"
+      required
+    >
 
     <label>Intensidade</label>
+
     <select name="intensidade" required>
+
       <% for (let i = 1; i <= 10; i++) { %>
-        <option value="<%= i %>" <%= crise.intensidade == i ? 'selected' : '' %>>
+
+        <option
+          value="<%= i %>"
+          <%= crise.intensidade == i ? 'selected' : '' %>
+        >
           <%= i %>
         </option>
+
       <% } %>
+
     </select>
 
-    <button type="submit">Salvar Alterações</button>
+    <button type="submit">
+      Salvar Alterações
+    </button>
+
   </form>
 
-  <a href="/crises" class="voltar">← Voltar para histórico</a>
+  <a href="/crises" class="botao">
+    Voltar para Histórico de Crises
+  </a>
+
+  <a href="/home" class="voltar">
+    ← Menu Principal
+  </a>
+
 </main>
+
+<%- include('../partials/footer') %>
 
 </body>
 </html>

@@ -16,14 +16,41 @@
 
     <% crises.forEach(crise => { %>
       <div class="card">
+
         <p><strong>Situação:</strong></p>
         <p><%= crise.situacao %></p>
 
         <p><strong>Emoção:</strong> <%= crise.emocao %></p>
-        <p><strong>Intensidade:</strong> <%= crise.intensidade %>/10</p>
+
+        <p><strong>Intensidade:</strong>
+          <%= crise.intensidade %>/10
+        </p>
 
         <p><strong>Ação sugerida:</strong></p>
         <p><%= crise.acaoSugerida %></p>
+
+        <% if (crise.intensidade >= 8) { %>
+
+          <div class="alerta">
+
+            <h3>Contatos de apoio</h3>
+
+            <% contatosApoio.forEach(contato => { %>
+
+              <p>
+                <strong><%= contato.nome %></strong><br>
+
+                Telefone:
+                <%= contato.telefone %><br>
+
+                <%= contato.descricao %>
+              </p>
+
+            <% }) %>
+
+          </div>
+
+        <% } %>
 
         <p>
           <strong>Data:</strong>
@@ -31,24 +58,48 @@
         </p>
 
         <div class="acoes">
-          <a class="botao-secundario" href="/crises/<%= crise.id %>/editar">
+
+          <a
+            class="botao-secundario"
+            href="/crises/<%= crise.id %>/editar">
+
             Editar
+
           </a>
 
-          <form action="/crises/<%= crise.id %>/excluir" method="POST">
-            <button class="botao-excluir" type="submit">
+          <form
+            action="/crises/<%= crise.id %>/excluir"
+            method="POST">
+
+            <button
+              class="botao-excluir"
+              type="submit">
+
               Excluir
+
             </button>
+
           </form>
+
         </div>
+
       </div>
+
     <% }) %>
 
   <% } %>
 
-  <a href="/crise" class="botao">Novo Registro</a>
-  <a href="/" class="voltar">← Voltar para início</a>
+  <a href="/crise" class="botao">
+    Novo Registro
+  </a>
+
+  <a href="/home" class="voltar">
+    ← Voltar para início
+  </a>
+
 </main>
+
+<%- include('../partials/footer') %>
 
 </body>
 </html>

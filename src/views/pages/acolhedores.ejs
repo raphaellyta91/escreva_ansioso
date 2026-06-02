@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Pessoas Disponíveis para Conversar</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<main class="container">
+  <h1>Pessoas Disponíveis para Conversar</h1>
+
+  <% if (acolhedores.length === 0) { %>
+    <p>Nenhuma pessoa cadastrada ainda.</p>
+  <% } else { %>
+
+    <% acolhedores.forEach(acolhedor => { %>
+      <div class="card">
+        <p><strong>Nome:</strong> <%= acolhedor.nome %></p>
+        <p><strong>Contato:</strong> <%= acolhedor.contato %></p>
+        <p><strong>Disponibilidade:</strong> <%= acolhedor.disponibilidade %></p>
+        <p><strong>Mensagem:</strong> <%= acolhedor.mensagem %></p>
+      </div>
+    <% }) %>
+
+  <% } %>
+
+  <a href="/acolhedor/cadastro" class="botao">Quero Ajudar</a>
+
+  <a href="/home" class="voltar">
+    ← Voltar para início
+  </a>
+
+</main>
+
+<%- include('../partials/footer') %>
+
+</body>
+</html>

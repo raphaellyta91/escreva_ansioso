@@ -8,14 +8,19 @@
 <body>
 
 <main class="container">
+
   <h1>Histórico: Fato ou Interpretação</h1>
 
   <% if (fatos.length === 0) { %>
+
     <p>Nenhum registro encontrado.</p>
+
   <% } else { %>
 
     <% fatos.forEach(fato => { %>
+
       <div class="card">
+
         <p><strong>Fato real:</strong></p>
         <p><%= fato.fatoReal %></p>
 
@@ -28,24 +33,48 @@
         </p>
 
         <div class="acoes">
-          <a class="botao-secundario" href="/fatos/<%= fato.id %>/editar">
+
+          <a
+            class="botao-secundario"
+            href="/fatos/<%= fato.id %>/editar">
+
             Editar
+
           </a>
 
-          <form action="/fatos/<%= fato.id %>/excluir" method="POST">
-            <button class="botao-excluir" type="submit">
+          <form
+            action="/fatos/<%= fato.id %>/excluir"
+            method="POST">
+
+            <button
+              class="botao-excluir"
+              type="submit">
+
               Excluir
+
             </button>
+
           </form>
+
         </div>
+
       </div>
+
     <% }) %>
 
   <% } %>
 
-  <a href="/fato" class="botao">Novo Registro</a>
-  <a href="/" class="voltar">← Voltar para início</a>
+  <a href="/fato" class="botao">
+    Novo Registro
+  </a>
+
+  <a href="/home" class="voltar">
+    ← Menu Principal
+  </a>
+
 </main>
+
+<%- include('../partials/footer') %>
 
 </body>
 </html>

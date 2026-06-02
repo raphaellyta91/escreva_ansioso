@@ -138,3 +138,48 @@ button:hover{
 .botao-excluir:hover {
   background: #c96b6b;
 }
+
+.alerta {
+  background: #fff3cd;
+  border-left: 5px solid #e0a800;
+  padding: 15px;
+  border-radius: 12px;
+  margin-top: 15px;
+}
+
+.alerta h3 {
+  color: #8a6d00;
+  margin-bottom: 10px;
+}
+
+.categoria {
+  margin-top: 25px;
+  padding: 20px;
+  background: #f7fbf9;
+  border-radius: 16px;
+  border-left: 5px solid #8bc7ac;
+}
+
+.categoria h2 {
+  color: #5f8f82;
+  margin-bottom: 15px;
+  text-align: center;
+  font-size: 22px;
+}
+
+
+.rodape {
+  width: 90%;
+  max-width: 900px;
+  margin: 20px auto;
+  background: #eef8f3;
+  padding: 18px;
+  border-radius: 15px;
+  text-align: center;
+  color: #555;
+  border-left: 5px solid #8bc7ac;
+}
+
+.rodape p {
+  margin-bottom: 8px;
+}

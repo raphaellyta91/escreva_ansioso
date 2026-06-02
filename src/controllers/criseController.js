@@ -1,5 +1,10 @@
 import Crise from '../models/crise.js';
 
+import {
+  gerarAcaoSugerida,
+  contatosApoio
+} from '../utils/frasesCrise.js';
+
 export function abrirCrise(req, res) {
   res.render('pages/crise');
 }
@@ -8,15 +13,7 @@ export async function salvarCrise(req, res) {
   try {
     const { situacao, emocao, intensidade } = req.body;
 
-    let acaoSugerida = '';
-
-    if (intensidade >= 8) {
-      acaoSugerida = 'Respire por 2 minutos, beba água e espere antes de tomar qualquer decisão.';
-    } else if (intensidade >= 5) {
-      acaoSugerida = 'Faça uma pausa, escreva o que sente e tente observar os fatos.';
-    } else {
-      acaoSugerida = 'Continue se observando e faça algo leve para cuidar de você.';
-    }
+    const acaoSugerida = gerarAcaoSugerida(intensidade);
 
     await Crise.create({
       situacao,
@@ -38,7 +35,10 @@ export async function listarCrises(req, res) {
       order: [['createdAt', 'DESC']]
     });
 
-    res.render('pages/crises', { crises });
+    res.render('pages/crises', {
+      crises,
+      contatosApoio
+    });
   } catch (erro) {
     console.log(erro);
     res.status(500).send('Erro ao listar crises.');
@@ -48,6 +48,7 @@ export async function listarCrises(req, res) {
 export async function abrirEditarCrise(req, res) {
   try {
     const { id } = req.params;
+
     const crise = await Crise.findByPk(id);
 
     if (!crise) {
@@ -72,15 +73,7 @@ export async function atualizarCrise(req, res) {
       return res.status(404).send('Crise não encontrada.');
     }
 
-    let acaoSugerida = '';
-
-    if (intensidade >= 8) {
-      acaoSugerida = 'Respire por 2 minutos, beba água e espere antes de tomar qualquer decisão.';
-    } else if (intensidade >= 5) {
-      acaoSugerida = 'Faça uma pausa, escreva o que sente e tente observar os fatos.';
-    } else {
-      acaoSugerida = 'Continue se observando e faça algo leve para cuidar de você.';
-    }
+    const acaoSugerida = gerarAcaoSugerida(intensidade);
 
     await crise.update({
       situacao,
