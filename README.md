@@ -1,31 +1,42 @@
 # Ansioso 🌿
 
-Aplicação web desenvolvida com Node.js, Express, Sequelize e MySQL.
+# Ansioso 🌿
 
-Projeto focado em apoio emocional e organização de pensamentos ansiosos.
+Aplicação web de apoio emocional e organização de pensamentos.
 
 ## Funcionalidades
 
 - Diário Emocional
-- Não Envie Agora
 - Fato ou Interpretação
+- Não Envie Agora
 - Modo Crise
-- Histórico emocional
-- CRUD completo
-- Sequelize + MySQL
-- MVC
+- Histórico de Registros
+- Cadastro e Login
+- Rede de Apoio
+- Frases Motivacionais
+- Contatos de Emergência
 
 ## Tecnologias
 
 - Node.js
 - Express
+- EJS
 - Sequelize
 - MySQL
-- EJS
-- CSS
+- JWT
+- bcrypt
+
+## Arquitetura
+
+MVC (Model View Controller)
 
 ## Como executar
 
+```bash
 npm install
+npm start
+```
 
-npm run dev
+Acesse:
+
+http://localhost:3000
