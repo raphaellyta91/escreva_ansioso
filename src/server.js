@@ -51,7 +51,7 @@ try {
 
   // ALTERAR APENAS TEMPORARIAMENTE
   await sequelize.sync();
-
+  //await sequelize.sync({ alter: true }); 
   console.log('Tabelas sincronizadas com sucesso!');
 
   app.listen(PORT, () => {

@@ -9,7 +9,9 @@ export function verificarToken(req, res, next) {
 
   try {
     const usuario = jwt.verify(token, process.env.JWT_SECRET);
+
     req.usuario = usuario;
+
     next();
   } catch (erro) {
     return res.redirect('/login');

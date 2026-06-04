@@ -23,17 +23,27 @@ const User = sequelize.define('User', {
     type: DataTypes.STRING,
     allowNull: false
   },
+
+  dicaSenha: {
+    type: DataTypes.STRING,
+    allowNull: true
+  },
+
+  perfil: {
+    type: DataTypes.ENUM('admin', 'psicologo', 'usercomum'),
+    allowNull: false,
+    defaultValue: 'usercomum'
+  },
+
   resetToken: {
-  type: DataTypes.STRING,
-  allowNull: true
-},
+    type: DataTypes.STRING,
+    allowNull: true
+  },
 
-resetTokenExpira: {
-  type: DataTypes.DATE,
-  allowNull: true
-}
-
-  
+  resetTokenExpira: {
+    type: DataTypes.DATE,
+    allowNull: true
+  }
 });
 
 export default User;

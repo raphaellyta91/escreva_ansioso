@@ -1,7 +1,7 @@
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
-import User from '../models/user.js';
 import crypto from 'crypto';
+import User from '../models/user.js';
 
 export function abrirCadastro(req, res) {
   res.render('pages/cadastro');
@@ -9,14 +9,16 @@ export function abrirCadastro(req, res) {
 
 export async function cadastrarUsuario(req, res) {
   try {
-    const { nome, email, senha } = req.body;
+    const { nome, email, senha, dicaSenha, perfil } = req.body;
 
     const senhaCriptografada = await bcrypt.hash(senha, 10);
 
     await User.create({
       nome,
       email,
-      senha: senhaCriptografada
+      senha: senhaCriptografada,
+      dicaSenha,
+      perfil
     });
 
     res.redirect('/login');
@@ -34,7 +36,9 @@ export async function loginUsuario(req, res) {
   try {
     const { email, senha } = req.body;
 
-    const usuario = await User.findOne({ where: { email } });
+    const usuario = await User.findOne({
+      where: { email }
+    });
 
     if (!usuario) {
       return res.send('Usuário não encontrado.');
@@ -50,7 +54,8 @@ export async function loginUsuario(req, res) {
       {
         id: usuario.id,
         nome: usuario.nome,
-        email: usuario.email
+        email: usuario.email,
+        perfil: usuario.perfil
       },
       process.env.JWT_SECRET,
       { expiresIn: '1h' }
@@ -73,14 +78,19 @@ export function logout(req, res) {
 }
 
 export function abrirEsqueciSenha(req, res) {
-  res.render('pages/esqueciSenha', { linkReset: null, erro: null });
+  res.render('pages/esqueciSenha', {
+    linkReset: null,
+    erro: null
+  });
 }
 
 export async function gerarLinkReset(req, res) {
   try {
     const { email } = req.body;
 
-    const usuario = await User.findOne({ where: { email } });
+    const usuario = await User.findOne({
+      where: { email }
+    });
 
     if (!usuario) {
       return res.render('pages/esqueciSenha', {
@@ -112,7 +122,9 @@ export async function abrirRedefinirSenha(req, res) {
   try {
     const { token } = req.params;
 
-    const usuario = await User.findOne({ where: { resetToken: token } });
+    const usuario = await User.findOne({
+      where: { resetToken: token }
+    });
 
     if (!usuario || usuario.resetTokenExpira < new Date()) {
       return res.send('Link inválido ou expirado.');
@@ -130,7 +142,9 @@ export async function redefinirSenha(req, res) {
     const { token } = req.params;
     const { novaSenha } = req.body;
 
-    const usuario = await User.findOne({ where: { resetToken: token } });
+    const usuario = await User.findOne({
+      where: { resetToken: token }
+    });
 
     if (!usuario || usuario.resetTokenExpira < new Date()) {
       return res.send('Link inválido ou expirado.');

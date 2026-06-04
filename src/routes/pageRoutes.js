@@ -8,7 +8,9 @@ router.get('/', (req, res) => {
 });
 
 router.get('/home', verificarToken, (req, res) => {
-  res.render('pages/home');
+  res.render('pages/home', {
+    usuario: req.usuario
+  });
 });
 
 export default router;

@@ -12,76 +12,70 @@
   <h1>🌿 Ansioso</h1>
 
   <p>
+    Olá, <strong><%= usuario.nome %></strong> 👋
+  </p>
+
+  <p>
+    Perfil: <strong><%= usuario.perfil %></strong>
+  </p>
+
+  <p>
     Bem-vindo(a)! Escolha uma ferramenta para organizar seus pensamentos,
     registrar emoções e encontrar apoio.
   </p>
 
   <section class="categoria">
-
     <h2>🧠 Ferramentas Emocionais</h2>
 
-    <a href="/diario" class="botao">
-      Diário Emocional
-    </a>
-
-    <a href="/fato" class="botao">
-      Fato ou Interpretação
-    </a>
-
-    <a href="/nao-envie-agora" class="botao">
-      Não Envie Agora
-    </a>
-
-    <a href="/crise" class="botao">
-      Modo Crise
-    </a>
-
+    <a href="/diario" class="botao">Diário Emocional</a>
+    <a href="/fato" class="botao">Fato ou Interpretação</a>
+    <a href="/nao-envie-agora" class="botao">Não Envie Agora</a>
+    <a href="/crise" class="botao">Modo Crise</a>
   </section>
 
   <section class="categoria">
-
     <h2>📚 Históricos</h2>
 
-    <a href="/historico" class="botao">
-      Histórico do Diário
-    </a>
-
-    <a href="/fatos" class="botao">
-      Histórico de Fatos
-    </a>
-
-    <a href="/mensagens" class="botao">
-      Mensagens Salvas
-    </a>
-
-    <a href="/crises" class="botao">
-      Histórico de Crises
-    </a>
-
+    <a href="/historico" class="botao">Histórico do Diário</a>
+    <a href="/fatos" class="botao">Histórico de Fatos</a>
+    <a href="/mensagens" class="botao">Mensagens Salvas</a>
+    <a href="/crises" class="botao">Histórico de Crises</a>
   </section>
 
   <section class="categoria">
-
     <h2>🤝 Rede de Apoio</h2>
 
-    <a href="/acolhedor/cadastro" class="botao">
-      Quero Ajudar
-    </a>
-
-    <a href="/acolhedores" class="botao">
-      Pessoas para Conversar
-    </a>
-
+    <a href="/acolhedor/cadastro" class="botao">Quero Ajudar</a>
+    <a href="/acolhedores" class="botao">Pessoas para Conversar</a>
   </section>
 
-  <section class="categoria">
+  <% if (usuario.perfil === 'admin') { %>
+    <section class="categoria">
+      <h2>⚙️ Área do Administrador</h2>
 
+      <p>Área reservada para funcionalidades administrativas.</p>
+
+      <a href="/acolhedores" class="botao">Gerenciar Acolhedores</a>
+    </section>
+  <% } %>
+
+  <% if (usuario.perfil === 'psicologo') { %>
+    <section class="categoria">
+      <h2>🧩 Área do Psicólogo</h2>
+
+      <p>Espaço para acompanhamento e apoio emocional.</p>
+
+      <a href="/acolhedores" class="botao">Ver Pessoas Disponíveis</a>
+      <a href="/crises" class="botao">Ver Histórico de Crises</a>
+    </section>
+  <% } %>
+
+  <section class="categoria">
     <h2>🔐 Conta</h2>
 
     <a href="/logout" class="botao botao-excluir">
       Sair da Conta
     </a>
-
   </section>
 
 </main>

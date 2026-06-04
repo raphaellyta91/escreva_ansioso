@@ -2,31 +2,82 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Cadastro</title>
+  <title>Cadastro - Ansioso</title>
   <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
 
 <main class="container">
-  <h1>Cadastro</h1>
+
+  <h1>📝 Cadastro</h1>
+
+  <p>
+    Crie sua conta para acessar as ferramentas de apoio emocional.
+  </p>
 
   <form action="/cadastro" method="POST">
+
     <label>Nome</label>
-    <input type="text" name="nome" required>
+    <input
+      type="text"
+      name="nome"
+      placeholder="Digite seu nome"
+      required
+    >
 
     <label>E-mail</label>
-    <input type="email" name="email" required>
+    <input
+      type="email"
+      name="email"
+      placeholder="Digite seu e-mail"
+      required
+    >
 
     <label>Senha</label>
-    <input type="password" name="senha" required>
+    <input
+      type="password"
+      name="senha"
+      placeholder="Digite sua senha"
+      required
+    >
 
-    <button type="submit">Cadastrar</button>
+    <label>Dica de senha</label>
+    <input
+      type="text"
+      name="dicaSenha"
+      placeholder="Ex: nome do meu pet"
+    >
 
- 
+    <label>Tipo de perfil</label>
+
+    <select name="perfil" required>
+      <option value="usercomum">
+        Usuário Comum
+      </option>
+
+      <option value="psicologo">
+        Psicólogo
+      </option>
+
+      <option value="admin">
+        Administrador
+      </option>
+    </select>
+
+    <button type="submit">
+      Cadastrar
+    </button>
 
   </form>
 
-  <a href="/login" class="voltar">Já tenho conta</a>
+  <a href="/login" class="botao">
+    Já tenho conta
+  </a>
+
+  <a href="/" class="voltar">
+    ← Voltar
+  </a>
+
 </main>
 
 <%- include('../partials/footer') %>
