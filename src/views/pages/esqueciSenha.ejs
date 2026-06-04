@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Esqueci minha senha</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<main class="container">
+  <h1>Esqueci minha senha</h1>
+
+  <p>Digite seu e-mail para gerar um link de redefinição.</p>
+
+  <form action="/esqueci-senha" method="POST">
+    <label>E-mail</label>
+    <input type="email" name="email" required>
+
+    <button type="submit">Gerar link</button>
+  </form>
+
+  <% if (erro) { %>
+    <p><strong><%= erro %></strong></p>
+  <% } %>
+
+  <% if (linkReset) { %>
+    <div class="card">
+      <p><strong>Link gerado:</strong></p>
+      <a href="<%= linkReset %>">Clique aqui para redefinir sua senha</a>
+    </div>
+  <% } %>
+
+  <a href="/login" class="voltar">← Voltar para login</a>
+</main>
+
+<%- include('../partials/footer') %>
+
+</body>
+</html>

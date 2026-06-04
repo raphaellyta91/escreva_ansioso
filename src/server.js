@@ -20,7 +20,6 @@ import './models/crise.js';
 import './models/acolhedor.js';
 import './models/user.js';
 
-
 dotenv.config();
 
 const app = express();
@@ -50,12 +49,15 @@ try {
   await sequelize.authenticate();
   console.log('Banco conectado com sucesso!');
 
+  // ALTERAR APENAS TEMPORARIAMENTE
   await sequelize.sync();
+
   console.log('Tabelas sincronizadas com sucesso!');
 
   app.listen(PORT, () => {
     console.log(`Servidor rodando em http://localhost:${PORT}`);
   });
+
 } catch (erro) {
   console.log('Erro ao conectar ou sincronizar o banco:', erro);
 }

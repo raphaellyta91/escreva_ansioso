@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Redefinir Senha</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<main class="container">
+  <h1>Redefinir Senha</h1>
+
+  <form action="/redefinir-senha/<%= token %>" method="POST">
+    <label>Nova senha</label>
+    <input type="password" name="novaSenha" required>
+
+    <button type="submit">Salvar nova senha</button>
+  </form>
+
+  <a href="/login" class="voltar">← Voltar para login</a>
+</main>
+
+<%- include('../partials/footer') %>
+
+</body>
+</html>

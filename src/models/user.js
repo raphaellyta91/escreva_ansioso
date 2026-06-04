@@ -22,7 +22,18 @@ const User = sequelize.define('User', {
   senha: {
     type: DataTypes.STRING,
     allowNull: false
-  }
+  },
+  resetToken: {
+  type: DataTypes.STRING,
+  allowNull: true
+},
+
+resetTokenExpira: {
+  type: DataTypes.DATE,
+  allowNull: true
+}
+
+  
 });
 
 export default User;
