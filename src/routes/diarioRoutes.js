@@ -18,8 +18,8 @@ router.post('/diario', salvarDiario);
 router.get('/historico', listarDiarios);
 
 router.get('/diario/:id/editar', abrirEditarDiario);
-router.post('/diario/:id/atualizar', atualizarDiario);
-router.post('/diario/:id/excluir', removerDiario);
+router.post('/diario/:id/atualizar', atualizarDiario); // put patch
+router.post('/diario/:id/excluir', removerDiario); // delete
 
 
 router.get('/diario', verificarToken, abrirDiario);
