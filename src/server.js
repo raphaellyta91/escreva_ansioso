@@ -23,7 +23,8 @@ import './models/user.js';
 dotenv.config();
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.EXPRESS_PORT || 3000;
+const HOST = process.env.EXPRESS_HOST || 'localhost';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -54,7 +55,7 @@ try {
   //await sequelize.sync({ alter: true }); 
   console.log('Tabelas sincronizadas com sucesso!');
 
-  app.listen(PORT, () => {
+  app.listen(PORT, HOST, () => {
     console.log(`Servidor rodando em http://localhost:${PORT}`);
   });
 
