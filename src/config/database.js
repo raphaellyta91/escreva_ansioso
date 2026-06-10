@@ -1,8 +1,20 @@
 import { Sequelize } from 'sequelize';
+import dotenv from 'dotenv';
 
-const sequelize = new Sequelize({
-  dialect: 'sqlite',
-  storage: './src/database/database.sqlite'
-});
+dotenv.config();
+
+const sequelize = new Sequelize(
+  process.env.DATABASE_URL,
+  {
+    dialect: 'postgres',
+    dialectOptions: {
+      ssl: {
+        require: true,
+        rejectUnauthorized: false
+      }
+    },
+    logging: false
+  }
+);
 
 export default sequelize;
