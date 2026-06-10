@@ -11,6 +11,7 @@ import {
   abrirRedefinirSenha,
    redefinirSenha
 } from '../controllers/authController.js';
+import { verificarToken } from '../middlewares/authMiddleware.js';
 
 const router = express.Router();
 
@@ -18,7 +19,7 @@ router.get('/cadastro', abrirCadastro);
 router.post('/cadastro', cadastrarUsuario);
 
 router.get('/login', abrirLogin);
-router.post('/login', loginUsuario);
+router.post('/login', verificarToken, loginUsuario);
 
 router.get('/logout', logout);
 
