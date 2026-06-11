@@ -4,6 +4,7 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 let sequelize;
+
 if(process.env.MODE_NODE === 'dev'){
 
     console.log('Modo: ', process.env.MODE_NODE)
@@ -16,12 +17,7 @@ if(process.env.MODE_NODE === 'dev'){
 }else{
 
     console.log('Modo: ', process.env.MODE_NODE)
-
-
-
-
-
-const sequelize = new Sequelize(process.env.DATABASE_URL, {
+ sequelize = new Sequelize(process.env.DATABASE_URL, {
   dialect: 'postgres',
   dialectOptions: {
     ssl: {
@@ -31,5 +27,6 @@ const sequelize = new Sequelize(process.env.DATABASE_URL, {
   },
   logging: false
 });
+}
 
 export default sequelize;
