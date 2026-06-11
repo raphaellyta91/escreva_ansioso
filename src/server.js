@@ -23,11 +23,16 @@ import './models/user.js';
 dotenv.config();
 
 const app = express();
-const PORT = process.env.EXPRESS_PORT || 3000;
-const HOST = process.env.EXPRESS_HOST || 'localhost';
-
+let PORT = process.env.EXPRESS_PORT ;
+let HOST = process.env.EXPRESS_HOST 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+
+if (process.env.MODE_NODE === 'dev') {
+   PORT = 30000;
+   HOST = 'localhost';
+}
+
 
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
