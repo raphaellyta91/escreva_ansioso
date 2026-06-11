@@ -9,9 +9,8 @@ import {
   abrirEsqueciSenha,
   gerarLinkReset,
   abrirRedefinirSenha,
-   redefinirSenha
+  redefinirSenha
 } from '../controllers/authController.js';
-import { verificarToken } from '../middlewares/authMiddleware.js';
 
 const router = express.Router();
 
@@ -19,7 +18,7 @@ router.get('/cadastro', abrirCadastro);
 router.post('/cadastro', cadastrarUsuario);
 
 router.get('/login', abrirLogin);
-router.post('/login', verificarToken, loginUsuario);
+router.post('/login', loginUsuario);
 
 router.get('/logout', logout);
 
@@ -28,7 +27,5 @@ router.post('/esqueci-senha', gerarLinkReset);
 
 router.get('/redefinir-senha/:token', abrirRedefinirSenha);
 router.post('/redefinir-senha/:token', redefinirSenha);
-
-
 
 export default router;
