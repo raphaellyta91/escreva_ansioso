@@ -29,7 +29,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 if (process.env.MODE_NODE === 'dev') {
-   PORT = 30000;
+   PORT = 3000;
    HOST = 'localhost';
 }
 
