@@ -9,6 +9,10 @@ const Fato = sequelize.define('Fato', {
   interpretacao: {
     type: DataTypes.TEXT,
     allowNull: false
+  },
+   userId: {
+    type: DataTypes.INTEGER,
+    allowNull: true
   }
 });
 

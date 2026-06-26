@@ -9,15 +9,17 @@ import {
   removerCrise
 } from '../controllers/criseController.js';
 
+import { verificarToken } from '../middlewares/authMiddleware.js';
+
 const router = express.Router();
 
-router.get('/crise', abrirCrise);
-router.post('/crise', salvarCrise);
+router.get('/crise', verificarToken, abrirCrise);
+router.post('/crise', verificarToken, salvarCrise);
 
-router.get('/crises', listarCrises);
+router.get('/crises', verificarToken, listarCrises);
 
-router.get('/crises/:id/editar', abrirEditarCrise);
-router.post('/crises/:id/atualizar', atualizarCrise);
-router.post('/crises/:id/excluir', removerCrise);
+router.get('/crises/:id/editar', verificarToken, abrirEditarCrise);
+router.post('/crises/:id/atualizar', verificarToken, atualizarCrise);
+router.post('/crises/:id/excluir', verificarToken, removerCrise);
 
 export default router;

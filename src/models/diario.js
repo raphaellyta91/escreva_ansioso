@@ -15,6 +15,11 @@ const Diario = sequelize.define('Diario', {
   intensidade: {
     type: DataTypes.INTEGER,
     allowNull: false
+  },
+
+  userId: {
+    type: DataTypes.INTEGER,
+    allowNull: true
   }
 });
 

@@ -17,6 +17,10 @@ const Acolhedor = sequelize.define('Acolhedor', {
   mensagem: {
     type: DataTypes.TEXT,
     allowNull: false
+  },
+   userId: {
+    type: DataTypes.INTEGER,
+    allowNull: true
   }
 });
 

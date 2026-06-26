@@ -17,6 +17,10 @@ const Crise = sequelize.define('Crise', {
   acaoSugerida: {
     type: DataTypes.TEXT,
     allowNull: false
+  },
+   userId: {
+    type: DataTypes.INTEGER,
+    allowNull: true
   }
 });
 

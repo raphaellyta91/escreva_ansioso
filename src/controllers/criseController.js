@@ -1,9 +1,5 @@
 import Crise from '../models/crise.js';
-
-import {
-  gerarAcaoSugerida,
-  contatosApoio
-} from '../utils/frasesCrise.js';
+import { gerarAcaoSugerida, contatosApoio } from '../utils/frasesCrise.js';
 
 export function abrirCrise(req, res) {
   res.render('pages/crise');
@@ -19,7 +15,8 @@ export async function salvarCrise(req, res) {
       situacao,
       emocao,
       intensidade,
-      acaoSugerida
+      acaoSugerida,
+      userId: req.usuario.id
     });
 
     res.redirect('/crises');
@@ -32,13 +29,11 @@ export async function salvarCrise(req, res) {
 export async function listarCrises(req, res) {
   try {
     const crises = await Crise.findAll({
+      where: { userId: req.usuario.id },
       order: [['createdAt', 'DESC']]
     });
 
-    res.render('pages/crises', {
-      crises,
-      contatosApoio
-    });
+    res.render('pages/crises', { crises, contatosApoio });
   } catch (erro) {
     console.log(erro);
     res.status(500).send('Erro ao listar crises.');
@@ -47,9 +42,12 @@ export async function listarCrises(req, res) {
 
 export async function abrirEditarCrise(req, res) {
   try {
-    const { id } = req.params;
-
-    const crise = await Crise.findByPk(id);
+    const crise = await Crise.findOne({
+      where: {
+        id: req.params.id,
+        userId: req.usuario.id
+      }
+    });
 
     if (!crise) {
       return res.status(404).send('Crise não encontrada.');
@@ -64,10 +62,14 @@ export async function abrirEditarCrise(req, res) {
 
 export async function atualizarCrise(req, res) {
   try {
-    const { id } = req.params;
     const { situacao, emocao, intensidade } = req.body;
 
-    const crise = await Crise.findByPk(id);
+    const crise = await Crise.findOne({
+      where: {
+        id: req.params.id,
+        userId: req.usuario.id
+      }
+    });
 
     if (!crise) {
       return res.status(404).send('Crise não encontrada.');
@@ -91,9 +93,12 @@ export async function atualizarCrise(req, res) {
 
 export async function removerCrise(req, res) {
   try {
-    const { id } = req.params;
-
-    const crise = await Crise.findByPk(id);
+    const crise = await Crise.findOne({
+      where: {
+        id: req.params.id,
+        userId: req.usuario.id
+      }
+    });
 
     if (!crise) {
       return res.status(404).send('Crise não encontrada.');
