@@ -9,15 +9,17 @@ import {
   removerMensagem
 } from '../controllers/mensagemController.js';
 
+import { verificarToken } from '../middlewares/authMiddleware.js';
+
 const router = express.Router();
 
-router.get('/nao-envie-agora', abrirMensagem);
-router.post('/nao-envie-agora', salvarMensagem);
+router.get('/nao-envie-agora', verificarToken, abrirMensagem);
+router.post('/nao-envie-agora', verificarToken, salvarMensagem);
 
-router.get('/mensagens', listarMensagens);
+router.get('/mensagens', verificarToken, listarMensagens);
 
-router.get('/mensagens/:id/editar', abrirEditarMensagem);
-router.post('/mensagens/:id/atualizar', atualizarMensagem);
-router.post('/mensagens/:id/excluir', removerMensagem);
+router.get('/mensagens/:id/editar', verificarToken, abrirEditarMensagem);
+router.post('/mensagens/:id/atualizar', verificarToken, atualizarMensagem);
+router.post('/mensagens/:id/excluir', verificarToken, removerMensagem);
 
 export default router;

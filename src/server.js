@@ -56,8 +56,8 @@ try {
   console.log('Banco conectado com sucesso!');
 
   // ALTERAR APENAS TEMPORARIAMENTE
-  await sequelize.sync();
-  //await sequelize.sync({ alter: true }); 
+  //await sequelize.sync();
+  await sequelize.sync({ alter: true }); 
   console.log('Tabelas sincronizadas com sucesso!');
 
   app.listen(PORT, HOST, () => {

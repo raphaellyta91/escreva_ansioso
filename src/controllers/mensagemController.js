@@ -8,7 +8,10 @@ export async function salvarMensagem(req, res) {
   try {
     const { texto } = req.body;
 
-    await Mensagem.create({ texto });
+    await Mensagem.create({
+      texto,
+      userId: req.usuario.id
+    });
 
     res.redirect('/mensagens');
   } catch (erro) {
@@ -20,6 +23,9 @@ export async function salvarMensagem(req, res) {
 export async function listarMensagens(req, res) {
   try {
     const mensagens = await Mensagem.findAll({
+      where: {
+        userId: req.usuario.id
+      },
       order: [['createdAt', 'DESC']]
     });
 
@@ -34,7 +40,12 @@ export async function abrirEditarMensagem(req, res) {
   try {
     const { id } = req.params;
 
-    const mensagem = await Mensagem.findByPk(id);
+    const mensagem = await Mensagem.findOne({
+      where: {
+        id,
+        userId: req.usuario.id
+      }
+    });
 
     if (!mensagem) {
       return res.status(404).send('Mensagem não encontrada.');
@@ -52,7 +63,12 @@ export async function atualizarMensagem(req, res) {
     const { id } = req.params;
     const { texto } = req.body;
 
-    const mensagem = await Mensagem.findByPk(id);
+    const mensagem = await Mensagem.findOne({
+      where: {
+        id,
+        userId: req.usuario.id
+      }
+    });
 
     if (!mensagem) {
       return res.status(404).send('Mensagem não encontrada.');
@@ -71,7 +87,12 @@ export async function removerMensagem(req, res) {
   try {
     const { id } = req.params;
 
-    const mensagem = await Mensagem.findByPk(id);
+    const mensagem = await Mensagem.findOne({
+      where: {
+        id,
+        userId: req.usuario.id
+      }
+    });
 
     if (!mensagem) {
       return res.status(404).send('Mensagem não encontrada.');

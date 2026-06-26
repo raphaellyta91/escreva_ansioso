@@ -10,6 +10,10 @@ const Mensagem = sequelize.define('Mensagem', {
    userId: {
     type: DataTypes.INTEGER,
     allowNull: true
+  }, 
+  userId: {
+    type: DataTypes.INTEGER,
+    allowNull: true
   }
 
 });

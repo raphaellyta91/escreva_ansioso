@@ -8,43 +8,61 @@ export async function salvarDiario(req, res) {
   try {
     const { situacao, emocao, intensidade } = req.body;
 
+    console.log('Usuario logado:', req.usuario);
+
     await Diario.create({
       situacao,
       emocao,
-      intensidade
+      intensidade,
+      userId: req.usuario.id
     });
 
     res.redirect('/historico');
+
   } catch (erro) {
+    console.log('ERRO AO SALVAR DIARIO');
     console.log(erro);
+
     res.status(500).send('Erro ao salvar diário emocional.');
   }
 }
 
 export async function listarDiarios(req, res) {
   try {
+
     const diarios = await Diario.findAll({
+      where: {
+        userId: req.usuario.id
+      },
       order: [['createdAt', 'DESC']]
     });
 
     res.render('pages/historico', { diarios });
+
   } catch (erro) {
+    console.log('ERRO AO LISTAR DIARIOS');
     console.log(erro);
+
     res.status(500).send('Erro ao listar histórico.');
   }
 }
 
 export async function abrirEditarDiario(req, res) {
   try {
-    const { id } = req.params;
 
-    const diario = await Diario.findByPk(id);
+    const diario = await Diario.findOne({
+      where: {
+        id: req.params.id,
+        userId: req.usuario.id
+      }
+    });
 
     if (!diario) {
       return res.status(404).send('Registro não encontrado.');
     }
 
     res.render('pages/editarDiario', { diario });
+
   } catch (erro) {
     console.log(erro);
     res.status(500).send('Erro ao abrir edição.');
@@ -53,10 +71,15 @@ export async function abrirEditarDiario(req, res) {
 
 export async function atualizarDiario(req, res) {
   try {
-    const { id } = req.params;
+
     const { situacao, emocao, intensidade } = req.body;
 
-    const diario = await Diario.findByPk(id);
+    const diario = await Diario.findOne({
+      where: {
+        id: req.params.id,
+        userId: req.usuario.id
+      }
+    });
 
     if (!diario) {
       return res.status(404).send('Registro não encontrado.');
@@ -69,6 +92,7 @@ export async function atualizarDiario(req, res) {
     });
 
     res.redirect('/historico');
+
   } catch (erro) {
     console.log(erro);
     res.status(500).send('Erro ao atualizar diário.');
@@ -77,9 +101,13 @@ export async function atualizarDiario(req, res) {
 
 export async function removerDiario(req, res) {
   try {
-    const { id } = req.params;
 
-    const diario = await Diario.findByPk(id);
+    const diario = await Diario.findOne({
+      where: {
+        id: req.params.id,
+        userId: req.usuario.id
+      }
+    });
 
     if (!diario) {
       return res.status(404).send('Registro não encontrado.');
@@ -88,6 +116,7 @@ export async function removerDiario(req, res) {
     await diario.destroy();
 
     res.redirect('/historico');
+
   } catch (erro) {
     console.log(erro);
     res.status(500).send('Erro ao excluir diário.');

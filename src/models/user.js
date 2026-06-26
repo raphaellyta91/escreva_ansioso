@@ -43,10 +43,6 @@ const User = sequelize.define('User', {
   resetTokenExpira: {
     type: DataTypes.DATE,
     allowNull: true
-  }, 
-   userId: {
-    type: DataTypes.INTEGER,
-    allowNull: true
   }
 });
 
